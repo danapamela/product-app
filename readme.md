@@ -24,5 +24,7 @@ ionic plugin add cordova-plugin-network-information
 
 ionic plugin add cordova-plugin-geolocation
 
+**Diego Ariza**
+
 
 
