@@ -19,7 +19,7 @@ import { SignoffPage} from '../pages/signoff/signoff';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
-import { RegisterPage } from '../pages/register/register';;
+import { RegisterPage } from '../pages/register/register';
 
 
 @Component({

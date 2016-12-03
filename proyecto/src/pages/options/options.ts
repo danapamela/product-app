@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import { RegisterPage } from '../register/register';;
+
 
 /*
   Generated class for the Options page.
@@ -15,8 +18,13 @@ export class OptionsPage {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
-    console.log('Hello OptionsPage Page');
+  loadLoginPage() {
+  	this.navCtrl.push(LoginPage);
   }
+
+  loadRegisterPage() {
+  	this.navCtrl.push(RegisterPage);
+  }
+
 
 }
