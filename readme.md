@@ -17,6 +17,12 @@ npm install --save @ionic/storage
 
 **Network Information**
 
-$ ionic plugin add cordova-plugin-network-information
+ionic plugin add cordova-plugin-network-information
+
+
+**Geolocation**
+
+ionic plugin add cordova-plugin-geolocation
+
 
 
