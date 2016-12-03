@@ -2,8 +2,24 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { ConfirmcreateproductPage } from '../pages/confirmcreateproduct/confirmcreateproduct';
+import { ConfirmdeleteproductPage } from '../pages/confirmdeleteproduct/confirmdeleteproduct';
+import { ConfirmeditproductPage } from '../pages/confirmeditproduct/confirmeditproduct';
+import { ConfirmeditprofilePage } from '../pages/confirmeditprofile/confirmeditprofile';
+import { ConfirmforgotpasswordPage } from '../pages/confirmforgotpassword/confirmforgotpassword';
+import { ConfirmregisterPage} from '../pages/confirmregister/confirmregister';
+import { CreateproductPage} from '../pages/createproduct/createproduct';
+import { EditproductPage} from '../pages/editproduct/editproduct';
+import { EditprofilePage} from '../pages/editprofile/editprofile';
+import { ForgotpassswordPage} from '../pages/forgotpasssword/forgotpasssword';
+import { ProductdetailPage} from '../pages/productdetail/productdetail';
+import { ProfiledetailPage} from '../pages/profiledetail/profiledetail';
+import { RemoveaccountPage} from '../pages/removeaccount/removeaccount';
+import { SignoffPage} from '../pages/signoff/signoff';
+import { LoginPage } from '../pages/login/login';
+import { HomePage } from '../pages/home/home';
+import { OptionsPage } from '../pages/options/options';
+import { RegisterPage } from '../pages/register/register';;
 
 
 @Component({
@@ -12,7 +28,7 @@ import { Page2 } from '../pages/page2/page2';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -21,8 +37,24 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Inicio', component: HomePage },
+      { title: 'Ingreso o Registro', component: OptionsPage },
+      { title: 'Ingresar', component: LoginPage },
+      { title: 'Olvide Mi Contraseña', component: ForgotpassswordPage },
+      { title: 'Confirmar Contraseña', component: ConfirmforgotpasswordPage },
+      { title: 'Registrarme', component: RegisterPage },
+      { title: 'Confirmar Registro', component: ConfirmregisterPage },
+      { title: 'Detalle Del Perfil', component: ProfiledetailPage },
+      { title: 'Eliminar Cuenta', component: RemoveaccountPage },
+      { title: 'Cerrar Sesión', component: SignoffPage },
+      { title: 'Editar Perfil', component: EditprofilePage },
+      { title: 'Confirmar Cambio Del Perfil', component: ConfirmeditprofilePage },
+      { title: 'Detalle Del Producto', component: ProductdetailPage },
+      { title: 'Editar Producto', component: EditproductPage },
+      { title: 'Confirmar Cambio Del Producto', component: ConfirmeditproductPage },
+      { title: 'Crear Producto', component: CreateproductPage },
+      { title: 'Confirmar Creacion Del Producto', component: ConfirmcreateproductPage },
+      { title: 'Confirmar Eliminar Producto', component: ConfirmdeleteproductPage },
     ];
 
   }
