@@ -26,5 +26,8 @@ ionic plugin add cordova-plugin-geolocation
 
 **Diego Ariza**
 
+**Dana Camelo**
+
+
 
 Christian Sosa
