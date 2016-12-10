@@ -28,7 +28,7 @@ export class HomePage {
 	data: any = { latitude: '', longitude: '' };
 
 
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService) {
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, storage: Storage ) {
 		this.getProducts();
 
 		this.storage.get("coords").then(res => {
