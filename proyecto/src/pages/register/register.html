@@ -4,18 +4,16 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <ion-list>
+    <form [formGroup]="todo" (ngSubmit)="navToHomePage()">
         <ion-item>
-            <ion-label color="primary" stacked>Nmbre de Usuario</ion-label>
-            <ion-input type="email" placeholder="ejemplo@mail.com"></ion-input>
+            <ion-label color="primary" stacked>Usuario</ion-label>
+            <ion-input formControlName="email" type="email" placeholder="ejemplo@mail.com"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="primary" stacked>Contraseña</ion-label>
-            <ion-input type="password" placeholder="******"></ion-input>
+            <ion-input formControlName="password" type="password" placeholder="******"></ion-input>
         </ion-item>
-    </ion-list>
-    <p>
-        <button ion-button (click)="presentConfirm()" block>Registrar</button>
-    </p>
+        <button ion-button type="submit" [disabled]="!todo.valid">Ingresar</button>
+    </form>
     <button ion-button clear (click)="navToTermsPage()">Terminos y Condiciones</button>
 </ion-content>

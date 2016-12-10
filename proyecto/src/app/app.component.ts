@@ -32,7 +32,7 @@ export class MyApp {
     this.initializeApp();
 
     if (this.isLogin) {
-      this.rootPage = HomePage;
+      this.rootPage = OptionsPage;
     } else {
       this.rootPage = HomePage;
     }
