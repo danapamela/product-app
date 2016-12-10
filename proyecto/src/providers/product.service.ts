@@ -1,60 +1,78 @@
-import {Injectable} from "@angular/core";
-import {Product} from "../models/product";
-import {Http, Headers} from "@angular/http";
+import { Injectable } from "@angular/core";
+import { Product } from "../models/product";
+import { Http, Headers } from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
+import { SQLite } from 'ionic-native';
+
 
 @Injectable()
 export class ProductService {
 
+    db: SQLite;
+
     private productsURI = 'http://138.68.0.83:7070 ';
     private headers = new Headers({
-                                    'Content-Type': 'application/json', 
-                                    'Origin': 'http://138.68.0.83:7070'
-                                    });
+        'Content-Type': 'application/json',
+        'Origin': 'http://138.68.0.83:7070'
+    });
 
-    constructor(private http: Http) { }
 
-    getProducts(): Observable<Product[]> {
-        return this.http.get(`${this.productsURI}/api/v1/product/list`)
-            .map(response => response.json() as Product[])
-            .catch(this.handleError);
+
+    constructor(private http: Http) {
+        this.db = new SQLite();
     }
 
-    getProduct(product: Product): Observable<Product> {
-        const url = `${this.productsURI}//api/v1/product/detail/${product.id}`;
-        return this.http.get(`${this.productsURI}/api/v1/product/list`)
-            .map(response => response.json() as Product)
-            .catch(this.handleError);
-    }    
 
-    update(product: Product): Observable<Product> {
-        const url = `${this.productsURI}//api/v1/product/update/${product.id}`;
-        return this.http
-            .put(url, JSON.stringify(product), {headers: this.headers})
-            .map(() => product)
-            .catch(this.handleError);
+    create(product: any) {
+        let sql = 'INSERT INTO product(name) VALUES(?)';
+        return this.db.executeSql(sql, [product.name]);
     }
 
-    delete(product: Product): Observable<Product> {
-        const url = `${this.productsURI}//api/v1/product/delete/${product.id}`;
-        return this.http
-            .put(url, JSON.stringify(product), {headers: this.headers})
-            .map(() => product)
-            .catch(this.handleError);
+    createTable(){
+    let sql = 'CREATE TABLE IF NOT EXISTS product(' +
+        'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+        'name TEXT, ' +
+        'type TEXT, ' +
+        'quantity INTEGER, ' +
+        'price TEXT)';
+    return this.db.executeSql(sql, []);
+  }
+
+    delete(product: any) {
+        let sql = 'DELETE FROM product WHERE id=?';
+        return this.db.executeSql(sql, [product.id]);
     }
 
-    create(name: string): Observable<Product> {
-
-        return this.http
-            .post(`${this.productsURI}/api/v1/product/create`, JSON.stringify({name: name}), {headers: this.headers})
-            .map(res => res.json())
-            .catch(this.handleError);
+    getAll() {
+        let sql = 'SELECT * FROM product';
+        return this.db.executeSql(sql, [])
+            .then(response => {
+                let products = [];
+                for (let index = 0; index < response.rows.length; index++) {
+                    products.push(response.rows.item(index));
+                }
+                return Promise.resolve(products);
+            })
     }
+
+    openDatabase() {
+        return this.db.openDatabase({
+            name: 'data.db',
+            location: 'default' 
+        });
+    }
+
+    update(product: any) {
+        let sql = 'UPDATE product SET name=?, completed=? WHERE id=?';
+        return this.db.executeSql(sql, [product.name, product.id]);
+    }
+
+
 
     private handleError(error: any): Observable<any> {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error); 
         return Observable.throw(error.message || error);
     }
 }

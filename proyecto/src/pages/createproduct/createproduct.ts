@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { Geolocation } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 
+
 @Component({
   selector: 'page-createproduct',
   templateUrl: 'createproduct.html'
@@ -26,10 +27,10 @@ export class CreateproductPage {
     });
 
     this.storage.get("coords").then(res => {
-      console.log(res); 
-      this.data.latitude = res['latitude']; 
+      console.log(res);
+      this.data.latitude = res['latitude'];
       this.data.longitude = res['longitude']
-      });
+    });
 
   }
 
@@ -59,7 +60,7 @@ export class CreateproductPage {
 
   }
 
-   ngOnInit() {
+  ngOnInit() {
     Geolocation.getCurrentPosition().then(resp => {
       this.setDataCoords.latitude = resp.coords.latitude;
       this.setDataCoords.longitude = resp.coords.longitude;
@@ -69,5 +70,6 @@ export class CreateproductPage {
       console.log('Error getting location', error);
     });
   }
+
 
 }
