@@ -4,7 +4,7 @@
   "v2": true,
   "typescript": true,
   "proxies": [{
-    "path": "*",
-    "proxyUrl": "http://138.68.0.83:7070"
-  }]  
+    "path": "",
+    "proxyUrl": "http://138.68.0.83:7070/api"
+  }] 
 }

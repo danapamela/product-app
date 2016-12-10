@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
+import { Validators, FormBuilder, FormGroup  } from '@angular/forms';
 import { User } from '../../models/user';
-import { TermsPage } from '../terms/terms'
-
-
+import { UserService } from '../../providers/user.service';
+import { OptionsPage } from '../../pages/options/options';
+import { TermsPage } from '../../pages/terms/terms';
 
 
 @Component({
@@ -14,15 +16,20 @@ import { TermsPage } from '../terms/terms'
 export class RegisterPage {
 
 	user: User = new User();
+  todo: FormGroup;  
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
-   this.user.firstname = "nombre";
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, public userService: UserService, private formBuilder: FormBuilder,) {
+     this.user.firstname = "nombre";
 
+    this.todo = this.formBuilder.group({
+      email: [''],
+      password: [''],
+    });     
   }
 
  presentConfirm() {
     let alert = this.alertCtrl.create({
-      title: '¡Hola!' + this.user.firstname,
+      title: '¡Hola! tu correo es' + this.todo.value.email,
       message: 'Confirma y Bienvenido',
       buttons: [
         {
@@ -35,8 +42,8 @@ export class RegisterPage {
         {
           text: 'Aceptar',
           handler: () => {
+            this.signUp();
               this.navCtrl.setRoot(HomePage);
-            
           }
         }
       ]
@@ -44,8 +51,35 @@ export class RegisterPage {
     alert.present();
   }
 
-    navToTermsPage() {
+  navToTermsPage() {
   	this.navCtrl.push(TermsPage);
   }
+
+
+  navToHomePage() {
+    console.log(this.todo);
+    this.user = new User();
+    this.user.email = this.todo.value.email;
+    this.user.password = this.todo.value.password;
+    console.log(this.user);
+    this.presentConfirm();
+    
+  }
+
+  signUp() {
+    this.userService.signUp(this.user)
+      .subscribe(
+      user => {
+        console.log(user);
+        if(user.id){
+          this.user = user;  
+          this.navCtrl.setRoot(HomePage); 
+        }
+      },
+      error => {
+        console.log(error);
+      }
+      );
+  }  
 
 }
