@@ -12,7 +12,18 @@
   <h3>Inicio</h3>
 
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    <ion-list>
+  <button ion-item *ngFor="let product of products" (click)="navToProductDetail(product)">
+    {{ product.id}}
+  </button>  
+</ion-list>
+    
   </p>
+    <ion-content padding>
+<p>
+  <button ion-button block (click)="navToProductDetail()">Detalle Profile</button>
+</p>
+
+
 
 </ion-content>

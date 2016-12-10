@@ -40,7 +40,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
 
     if(this.isLogin){
-      this.rootPage = LoginPage;
+      this.rootPage = HomePage;
     }else{
       this.rootPage = HomePage;
     }
