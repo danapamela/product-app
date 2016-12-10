@@ -26,7 +26,12 @@ ionic plugin add cordova-plugin-geolocation
 
 **Diego Ariza**
 
+<<<<<<< HEAD
 ****
+=======
+**Dana Camelo**
+
+>>>>>>> c33bab107cfc79662977cc9045589cc0880b433f
 
 
 Christian Sosa

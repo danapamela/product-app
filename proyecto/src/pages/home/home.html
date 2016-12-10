@@ -1,0 +1,23 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Inicio</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Inicio</h3>
+
+  <p>
+    <ion-list>
+  <button ion-item *ngFor="let product of products" (click)="navToProductDetail(product)">
+    {{ product.id}}
+  </button>  
+</ion-list>
+    
+  </p>
+
+</ion-content>
