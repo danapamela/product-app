@@ -1,22 +1,51 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
+import { HomePage } from '../home/home';
+import { User } from '../../models/user';
+import { TermsPage } from '../terms/terms'
 
-/*
-  Generated class for the Register page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
+
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController) {}
+	user: User = new User();
 
-  ionViewDidLoad() {
-    console.log('Hello RegisterPage Page');
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
+   this.user.firstname = "nombre";
+
+  }
+
+ presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: '¡Hola!' + this.user.firstname,
+      message: 'Confirma y Bienvenido',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Click en cancelar');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+              this.navCtrl.setRoot(HomePage);
+            
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+    navToTermsPage() {
+  	this.navCtrl.setRoot(TermsPage);
   }
 
 }

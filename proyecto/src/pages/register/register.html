@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>registrar</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<ion-list>
+  <ion-item>
+    <ion-label color="primary" stacked>Nmbre de Usuario</ion-label>
+    <ion-input type="email" placeholder="ejemplo@mail.com"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Contraseña</ion-label>
+    <ion-input type="password" placeholder="******"></ion-input>
+  </ion-item>
+</ion-list>  
+
+<p>
+  <button ion-button (click)="presentConfirm()" block>Registrar</button>
+</p>
+
+
+  <button ion-button clear (click)="navToTermsPage()">Terminos y Condiciones</button>
 
 </ion-content>
