@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { ConfirmforgotpasswordPage } from '../confirmforgotpassword/confirmforgotpassword';
 
 /*
@@ -14,10 +14,29 @@ import { ConfirmforgotpasswordPage } from '../confirmforgotpassword/confirmforgo
 })
 export class ForgotpassswordPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {}
 
-    navToConfirmforgotpasswordPage() {
-  	this.navCtrl.setRoot(ConfirmforgotpasswordPage);
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Contraseña',
+      message: 'Confirmar cambio de contraseña',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Click en cancelar');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Click en aceptar');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 
