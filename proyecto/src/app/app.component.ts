@@ -32,11 +32,7 @@ export class MyApp {
     this.initializeApp();
 
     if (this.isLogin) {
-<<<<<<< HEAD
       this.rootPage = HomePage;
-=======
-      this.rootPage = OptionsPage;
->>>>>>> f1572580401b524ae148c3178011707b1aabd15c
     } else {
       this.rootPage = HomePage;
     }
