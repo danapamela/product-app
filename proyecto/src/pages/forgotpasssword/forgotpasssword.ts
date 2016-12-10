@@ -23,7 +23,7 @@ export class ForgotpassswordPage {
             console.log('Click en cancelar');
           }
         },
-        {
+        {			
           text: 'Aceptar',
           handler: () => {
               this.navCtrl.push(LoginPage);
@@ -37,3 +37,8 @@ export class ForgotpassswordPage {
 
 
 }
+
+
+
+
+	

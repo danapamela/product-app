@@ -14,9 +14,11 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+import { NetworkPage } from '../pages/network/network';
 import { ProductService } from '../providers/product.service';
 import { UserService } from '../providers/user.service';
 import { Storage } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { Storage } from '@ionic/storage';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage
+    TermsPage,
+    NetworkPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -53,7 +56,8 @@ import { Storage } from '@ionic/storage';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage
+    TermsPage,
+    NetworkPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService, UserService, Storage]
 })

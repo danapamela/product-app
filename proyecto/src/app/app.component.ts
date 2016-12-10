@@ -14,6 +14,8 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+import { NetworkPage } from '../pages/network/network';
+
 
 
 @Component({
@@ -41,7 +43,8 @@ export class MyApp {
       { title: 'Inicio', component: HomePage },
       { title: 'Crear producto', component: CreateproductPage },      
       { title: 'Detalle del perfil', component: ProfiledetailPage },
-      { title: 'Cerrar sesión', component: SignoffPage }      
+      { title: 'Cerrar sesión', component: SignoffPage },    
+      { title: 'network information', component: NetworkPage}  
     ];
 
   }
