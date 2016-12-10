@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Rx';
 @Injectable()
 export class ProductService {
 
-    private productsURI = 'http://138.68.0.83:7070 ';
+    private productsURI = 'http://138.68.0.83:7070';
     private headers = new Headers({
                                     'Content-Type': 'application/json', 
                                     'Origin': 'http://138.68.0.83:7070'
