@@ -15,6 +15,7 @@ import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -31,7 +32,7 @@ export class MyApp {
     this.initializeApp();
 
     if (this.isLogin) {
-      this.rootPage = OptionsPage;
+      this.rootPage = HomePage;
     } else {
       this.rootPage = HomePage;
     }

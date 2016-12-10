@@ -14,7 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
-
+import { ProductService } from '../providers/product.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +53,6 @@ import { TermsPage } from '../pages/terms/terms';
     RegisterPage,
     TermsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService]
 })
 export class AppModule {}
