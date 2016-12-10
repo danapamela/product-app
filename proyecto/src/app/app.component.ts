@@ -28,7 +28,7 @@ import { RegisterPage } from '../pages/register/register';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = ForgotpassswordPage;
   isLogin: boolean = true;
 
 

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { HomePage } from '../home/home';
+import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
 
 /*
   Generated class for the Login page.
@@ -15,8 +17,13 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
-    console.log('Hello LoginPage Page');
+  navToHomePage() {
+  	this.navCtrl.setRoot(HomePage);
   }
 
+    navToForgotpassswordPage() {
+  	this.navCtrl.setRoot(ForgotpassswordPage);
+  }
+
+  
 }
