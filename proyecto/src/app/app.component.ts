@@ -30,7 +30,7 @@ import { TermsPage } from '../pages/terms/terms';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ForgotpassswordPage;
+  rootPage: any = LoginPage;
   isLogin: boolean = true;
 
 
@@ -42,7 +42,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
 
     if(this.isLogin){
-      this.rootPage = HomePage;
+      this.rootPage = LoginPage;
     }else{
       this.rootPage = HomePage;
     }

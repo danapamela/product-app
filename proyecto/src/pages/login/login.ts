@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /*
   Generated class for the Login page.
@@ -12,10 +13,20 @@ import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
-})
+
+ })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {}
+  todo: FormGroup;
+
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+
+      this.todo = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+
+  }
 
   navToHomePage() {
   	this.navCtrl.setRoot(HomePage);
@@ -23,6 +34,13 @@ export class LoginPage {
 
     navToForgotpassswordPage() {
   	this.navCtrl.setRoot(ForgotpassswordPage);
+  }
+
+  ionViewLoaded() {
+  
+  }
+  logForm(){
+    console.log(this.todo.value)
   }
 
   
