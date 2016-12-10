@@ -1,6 +1,14 @@
 {
   "name": "proyecto",
+<<<<<<< HEAD
   "app_id": "a97f5b29",
+=======
+  "app_id": "b7c2d237",
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [{
+    "path": "",
+    "proxyUrl": "http://138.68.0.83:7070/api"
+  }] 
 }

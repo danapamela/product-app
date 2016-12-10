@@ -13,7 +13,13 @@ import { SignoffPage } from '../signoff/signoff';
 import { LoginPage } from '../login/login';
 import { OptionsPage } from '../options/options';
 import { RegisterPage } from '../register/register';
+<<<<<<< HEAD
 
+=======
+import { ProductService } from '../../providers/product.service';
+import { Geolocation } from 'ionic-native';
+import { Storage } from '@ionic/storage';
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
 
 @Component({
 	selector: 'page-home',
@@ -22,6 +28,7 @@ import { RegisterPage } from '../register/register';
 export class HomePage {
 
 	products: Product[] = [];
+<<<<<<< HEAD
 	users: User[] = [];
 
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
@@ -37,6 +44,19 @@ export class HomePage {
 		this.products.push(producto2);
 
 		
+=======
+	private setDataCoords: any = {latitude: '', longitude: ''};
+  	data: any = {latitude: '', longitude: ''};
+
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, public storage: Storage ) {
+		this.getProducts();
+
+		this.storage.get("coords").then(res => {
+			console.log(res);
+			this.data.latitude = res['latitude'];
+			this.data.longitude = res['longitude']
+		});
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
 	}
 
 	navToOptionsPage() {
@@ -54,7 +74,7 @@ export class HomePage {
 
 	navToCreateproductPage() {
 		this.navCtrl.push(CreateproductPage);
-	}	
+	}
 
 	navToRemoveAccount() {
 		let alert = this.alertCtrl.create({
@@ -80,32 +100,41 @@ export class HomePage {
 		alert.present();
 	}
 
-  doRefreshHone(refresher) {
-    console.log('Begin async operation', refresher);
+	doRefreshHone(refresher) {
+		console.log('Begin async operation', refresher);
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
-
-
-		let producto1 = new Product();
-		let producto2 = new Product();
-		producto1.id = 1;
-		producto1.name = "Nombre 1";
-		producto2.id = 2;
-		producto2.name = "Nombre 2";
-
-		this.products = [];
-
-		this.products.push(producto2);
-		this.products.push(producto2);
-		this.products.push(producto2);
-		this.products.push(producto2);
-		this.products.push(producto2);
-		this.products.push(producto2);
+		setTimeout(() => {
+			this.getProducts();
+			refresher.complete();
+		}, 2000);
+	}
 
 
-      refresher.complete();
-    }, 2000);
-  }	
+<<<<<<< HEAD
+=======
+	getProducts() {
+		this.productService.getProducts()
+			.subscribe(
+			products => {
+				this.products = products;
+			},
+			error => {
+				console.log(error);
+			}
+			);
+	}
 
+	ngOnInit() {
+		Geolocation.getCurrentPosition().then(resp => {
+			this.setDataCoords.latitude = resp.coords.latitude;
+			this.setDataCoords.longitude = resp.coords.longitude;
+
+			this.storage.set("coords", this.setDataCoords);
+		}).catch((error) => {
+			console.log('Error getting location', error);
+		});
+	}
+
+
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
 }

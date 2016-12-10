@@ -14,6 +14,9 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+import { NetworkPage } from '../pages/network/network';
+import { ProductService } from '../providers/product.service';
+import { UserService } from '../providers/user.service';
 import { Storage } from '@ionic/storage';
 import { ProductService } from '../providers/product.service';
 
@@ -33,7 +36,8 @@ import { ProductService } from '../providers/product.service';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage
+    TermsPage,
+    NetworkPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -53,10 +57,15 @@ import { ProductService } from '../providers/product.service';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage
+    TermsPage,
+    NetworkPage
   ],
+<<<<<<< HEAD
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
   Storage, ProductService
   ]
+=======
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService, UserService, Storage]
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
 })
 export class AppModule {}

@@ -10,9 +10,13 @@ import { SQLite } from 'ionic-native';
 @Injectable()
 export class ProductService {
 
+<<<<<<< HEAD
     db: SQLite;
 
     private productsURI = 'http://138.68.0.83:7070 ';
+=======
+    private productsURI = 'http://138.68.0.83:7070';
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
     private headers = new Headers({
         'Content-Type': 'application/json',
         'Origin': 'http://138.68.0.83:7070'

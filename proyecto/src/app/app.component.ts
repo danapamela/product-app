@@ -14,7 +14,13 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+<<<<<<< HEAD
 import { ProductService } from '../providers/product.service';
+=======
+import { NetworkPage } from '../pages/network/network';
+
+
+>>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
 
 @Component({
   templateUrl: 'app.html'
@@ -32,7 +38,7 @@ export class MyApp {
     this.initializeApp();
 
     if (this.isLogin) {
-      this.rootPage = CreateproductPage;
+      this.rootPage = OptionsPage;
     } else {
       this.rootPage = HomePage;
     }
@@ -41,7 +47,8 @@ export class MyApp {
       { title: 'Inicio', component: HomePage },
       { title: 'Crear producto', component: CreateproductPage },      
       { title: 'Detalle del perfil', component: ProfiledetailPage },
-      { title: 'Cerrar sesión', component: SignoffPage }      
+      { title: 'Cerrar sesión', component: SignoffPage },    
+      { title: 'network information', component: NetworkPage}  
     ];
 
   }

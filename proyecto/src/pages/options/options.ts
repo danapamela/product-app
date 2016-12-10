@@ -2,19 +2,16 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';;
+import { Network } from 'ionic-native';
 
 
-/*
-  Generated class for the Options page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-options',
   templateUrl: 'options.html'
 })
 export class OptionsPage {
+
+  public network: string;
 
   constructor(public navCtrl: NavController) {}
 
@@ -26,5 +23,6 @@ export class OptionsPage {
   	this.navCtrl.push(RegisterPage);
   }
 
-
 }
+
+

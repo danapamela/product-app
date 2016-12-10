@@ -15,6 +15,8 @@ ionic plugin add cordova-plugin-network-information
 **Geolocation**
 ionic plugin add cordova-plugin-geolocation
 
+
+
 Diego Ariza
 Dana Camelo
 Christian Sosa
