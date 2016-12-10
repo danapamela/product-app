@@ -18,11 +18,11 @@ export class OptionsPage {
 
   constructor(public navCtrl: NavController) {}
 
-  loadLoginPage() {
+  navToLoginPage() {
   	this.navCtrl.push(LoginPage);
   }
 
-  loadRegisterPage() {
+  navToRegisterPage() {
   	this.navCtrl.push(RegisterPage);
   }
 

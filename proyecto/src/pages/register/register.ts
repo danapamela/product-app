@@ -45,7 +45,7 @@ export class RegisterPage {
   }
 
     navToTermsPage() {
-  	this.navCtrl.setRoot(TermsPage);
+  	this.navCtrl.push(TermsPage);
   }
 
 }

@@ -1,29 +1,24 @@
-
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Inicio</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Inicio</ion-title>
+    </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <h3>Inicio</h3>
-
-  <p>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefreshHone($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <h1>Lista de productos</h1>
     <ion-list>
-  <button ion-item *ngFor="let product of products" (click)="navToProductDetail(product)">
-    {{ product.id}}
-  </button>  
-</ion-list>
-    
-  </p>
-    <ion-content padding>
-<p>
-  <button ion-button block (click)="navToProductDetail()">Detalle Profile</button>
-</p>
-
-
-
+        <button ion-item *ngFor="let product of products" (click)="navToProductDetail(product)">
+            {{ product.name }}
+        </button>
+    </ion-list>
+    <button ion-button block (click)="navToProfileDetail()">Detalle del perfil</button>
+    <button ion-button block (click)="navToCreateproductPage()">Crear producto</button>
+    <button ion-button block (click)="navToOptionsPage()">Cerrar sesión</button>
+    <br />
+    <button ion-button color="danger" block (click)="navToRemoveAccount()">Eliminar cuenta</button>
 </ion-content>

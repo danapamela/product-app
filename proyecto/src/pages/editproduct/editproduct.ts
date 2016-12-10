@@ -1,22 +1,49 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController, AlertController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-/*
-  Generated class for the Editproduct page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-editproduct',
   templateUrl: 'editproduct.html'
 })
 export class EditproductPage {
 
-  constructor(public navCtrl: NavController) {}
+product: FormGroup;
 
-  ionViewDidLoad() {
-    console.log('Hello EditproductPage Page');
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public viewCtrl: ViewController, private alertCtrl: AlertController) {
+    this.product = this.formBuilder.group({
+      name: [''],
+      type: [''],
+      price: [''],
+      quantity: [''],
+      url: [''],
+    });
   }
 
+  editProfileForm(){
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Remove Product',
+      message: 'Do you want to change info account?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Ok clicked');
+            this.viewCtrl.dismiss();
+          }
+        }
+      ]
+    });
+    alert.present();    
+    
+  }
 }

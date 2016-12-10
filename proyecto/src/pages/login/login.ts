@@ -4,12 +4,7 @@ import { HomePage } from '../home/home';
 import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-/*
-  Generated class for the Login page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -22,8 +17,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
 
       this.todo = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: [''],
+      password: [''],
     });
 
   }
@@ -33,15 +28,7 @@ export class LoginPage {
   }
 
     navToForgotpassswordPage() {
-  	this.navCtrl.setRoot(ForgotpassswordPage);
+  	this.navCtrl.push(ForgotpassswordPage);
   }
-
-  ionViewLoaded() {
-  
-  }
-  logForm(){
-    console.log(this.todo.value)
-  }
-
   
 }

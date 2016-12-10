@@ -1,22 +1,50 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController, AlertController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { HomePage } from '../home/home';
 
-/*
-  Generated class for the Createproduct page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-createproduct',
   templateUrl: 'createproduct.html'
 })
 export class CreateproductPage {
 
-  constructor(public navCtrl: NavController) {}
+product: FormGroup;
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder,private alertCtrl: AlertController) {
+    this.product = this.formBuilder.group({
+      name: [''],
+      type: [''],
+      price: [''],
+      quantity: [''],
+      url: [''],
+    });
 
-  ionViewDidLoad() {
-    console.log('Hello CreateproductPage Page');
+  }
+
+  createProductForm(){
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirm add product',
+      message: 'Do you want to add product?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Ok clicked');
+            this.navCtrl.setRoot(HomePage);
+          }
+        }
+      ]
+    });
+    alert.present();    
+    
   }
 
 }

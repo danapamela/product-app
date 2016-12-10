@@ -1,17 +1,13 @@
-
 <ion-header>
-  <ion-navbar>
-
-    <ion-title>Inicio</ion-title>
-  </ion-navbar>
+    
 </ion-header>
-
-<ion-content padding>
-<p>
-  <button ion-button block (click)="loadLoginPage()">Ingresar</button>
-</p>
-
-<p>
-  <button ion-button block (click)="loadRegisterPage()">Registrar</button>
-<p>  
+<ion-content>
+    <ion-grid>
+        <ion-row center>
+            <ion-col>
+            	<button ion-button block (click)="navToRegisterPage()">¡Registrarme!</button>
+                <button ion-button block (click)="navToLoginPage()">¡Ingresar!</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
