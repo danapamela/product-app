@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
+import { User } from '../../models/user';
 import { NavController } from 'ionic-angular';
 import { ConfirmcreateproductPage } from '../confirmcreateproduct/confirmcreateproduct';
 import { ConfirmdeleteproductPage } from '../confirmdeleteproduct/confirmdeleteproduct';
@@ -26,7 +27,7 @@ import { RegisterPage } from '../register/register';
 export class HomePage {
 
 products: Product[] = [];
-
+users: User[] = [];
   constructor(public navCtrl: NavController) {
     
  let producto1 = new Product();
@@ -36,11 +37,22 @@ products: Product[] = [];
  
 this.products.push(producto1);
 this.products.push(producto2);
+
+let user1 = new User();
+user1.id=1;
+ 
+this.users.push(user1);
+
   }
 
 navToProductDetail(product:any){
 
 this.navCtrl.push(ProductdetailPage);
+
+}
+
+navToProfileDetail(user:any){
+	this.navCtrl.push(ProfiledetailPage);
 
 }
 
