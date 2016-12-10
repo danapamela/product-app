@@ -28,7 +28,7 @@ import { RegisterPage } from '../pages/register/register';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ProductdetailPage;
+  rootPage: any = LoginPage;
   isLogin: boolean = true;
 
 
@@ -40,7 +40,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
 
     if(this.isLogin){
-      this.rootPage = HomePage;
+      this.rootPage = LoginPage;
     }else{
       this.rootPage = HomePage;
     }
