@@ -19,6 +19,8 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
+import { TermsPage } from '../pages/terms/terms';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { RegisterPage } from '../pages/register/register';
     SignoffPage,
     LoginPage,
     OptionsPage,
-    RegisterPage
+    RegisterPage,
+    TermsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -65,7 +68,8 @@ import { RegisterPage } from '../pages/register/register';
     SignoffPage,
     LoginPage,
     OptionsPage,
-    RegisterPage
+    RegisterPage,
+    TermsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
