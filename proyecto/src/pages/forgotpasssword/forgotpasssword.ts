@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import { ConfirmforgotpasswordPage } from '../confirmforgotpassword/confirmforgotpassword';
+import { LoginPage } from '../login/login';
 
 /*
   Generated class for the Forgotpasssword page.
@@ -19,7 +19,7 @@ export class ForgotpassswordPage {
   presentConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Contraseña',
-      message: 'Confirmar cambio de contraseña',
+      message: 'Confirmar Cambio de Contraseña',
       buttons: [
         {
           text: 'Cancelar',
@@ -31,7 +31,8 @@ export class ForgotpassswordPage {
         {
           text: 'Aceptar',
           handler: () => {
-            console.log('Click en aceptar');
+              this.navCtrl.setRoot(LoginPage);
+            
           }
         }
       ]
