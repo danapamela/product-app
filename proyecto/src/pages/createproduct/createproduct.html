@@ -1,13 +1,13 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Crear producto</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>Crear producto</ion-title>
+    </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
+
+    <h2>Latitude: {{ data.latitude }}</h2>
+    <h2>Longitude: {{ data.longitude }}</h2>
+
     <form [formGroup]="product" (ngSubmit)="createProductForm()">
         <ion-item>
             <ion-label>name</ion-label>
@@ -20,11 +20,11 @@
         <ion-item>
             <ion-label>price</ion-label>
             <ion-input type="text" formControlName="price"></ion-input>
-        </ion-item> 
+        </ion-item>
         <ion-item>
             <ion-label>quantity</ion-label>
             <ion-input type="text" formControlName="quantity"></ion-input>
-        </ion-item> 
+        </ion-item>
         <ion-item>
             <ion-label>url</ion-label>
             <ion-input type="text" formControlName="url"></ion-input>
