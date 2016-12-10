@@ -8,10 +8,9 @@ import {Observable} from 'rxjs/Rx';
 @Injectable()
 export class UserService {
 
-    private usersURI = 'http://138.68.0.83:7070 ';
+    private usersURI = 'http://138.68.0.83:7070';
     private headers = new Headers({
                                     'Content-Type': 'application/json', 
-                                    'Origin': 'http://138.68.0.83:7070'
                                     });
 
     constructor(private http: Http) { }
@@ -26,6 +25,20 @@ export class UserService {
         const url = `${this.usersURI}//api/v1/user/detail/${user.id}`;
         return this.http.get(`${this.usersURI}/api/v1/user/list`)
             .map(response => response.json() as User)
+            .catch(this.handleError);
+    }      
+
+    signIn(user: User): Observable<User> {
+        return this.http
+            .post(`${this.usersURI}/api/v1/user/sign-in`, JSON.stringify(user), {headers: this.headers})
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
+
+    signUp(user: User): Observable<User> {
+        return this.http
+            .post(`${this.usersURI}/api/v1/user/sign-up`, JSON.stringify(user), {headers: this.headers})
+            .map(response => response.json())
             .catch(this.handleError);
     }    
 

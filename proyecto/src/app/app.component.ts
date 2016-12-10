@@ -17,13 +17,14 @@ import { TermsPage } from '../pages/terms/terms';
 import { NetworkPage } from '../pages/network/network';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = OptionsPage;
+  rootPage: any = CreateproductPage;
   isLogin: boolean = true;
 
 

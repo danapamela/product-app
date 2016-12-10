@@ -2,5 +2,9 @@
   "name": "proyecto",
   "app_id": "b7c2d237",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [{
+    "path": "",
+    "proxyUrl": "http://138.68.0.83:7070/api"
+  }] 
 }
