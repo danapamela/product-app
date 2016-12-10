@@ -26,7 +26,7 @@ export class HomePage {
 	products: Product[] = [];
 	private setDataCoords: any = {latitude: '', longitude: ''};
   	data: any = {latitude: '', longitude: ''};
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService) {
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, storage: Storage) {
 		this.getProducts();
 		this.storage.get("coords").then(res => {
     	console.log(res); 
