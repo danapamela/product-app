@@ -14,6 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+import { NetworkPage } from '../pages/network/network';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TermsPage } from '../pages/terms/terms';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage
+    TermsPage,
+    NetworkPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -51,7 +53,8 @@ import { TermsPage } from '../pages/terms/terms';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage
+    TermsPage,
+    NetworkPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
