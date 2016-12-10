@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, ViewController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
+import { Geolocation } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-createproduct',
@@ -9,8 +11,12 @@ import { HomePage } from '../home/home';
 })
 export class CreateproductPage {
 
-product: FormGroup;
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder,private alertCtrl: AlertController) {
+  product: FormGroup;
+
+  private setDataCoords: any = { latitude: '', longitude: '' };
+  data: any = { latitude: '', longitude: '' };
+
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, public storage: Storage) {
     this.product = this.formBuilder.group({
       name: [''],
       type: [''],
@@ -19,9 +25,15 @@ product: FormGroup;
       url: [''],
     });
 
+    this.storage.get("coords").then(res => {
+      console.log(res); 
+      this.data.latitude = res['latitude']; 
+      this.data.longitude = res['longitude']
+      });
+
   }
 
-  createProductForm(){
+  createProductForm() {
 
     let alert = this.alertCtrl.create({
       title: 'Confirm add product',
@@ -43,8 +55,19 @@ product: FormGroup;
         }
       ]
     });
-    alert.present();    
-    
+    alert.present();
+
+  }
+
+   ngOnInit() {
+    Geolocation.getCurrentPosition().then(resp => {
+      this.setDataCoords.latitude = resp.coords.latitude;
+      this.setDataCoords.longitude = resp.coords.longitude;
+
+      this.storage.set("coords", this.setDataCoords);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
 }

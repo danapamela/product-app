@@ -14,7 +14,12 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+<<<<<<< HEAD
 import { ProductService } from '../providers/product.service';
+=======
+import { Storage } from '@ionic/storage';
+
+>>>>>>> 70613f50c07a5c4ec1be064d841f418b27de1730
 
 @NgModule({
   declarations: [
@@ -53,6 +58,12 @@ import { ProductService } from '../providers/product.service';
     RegisterPage,
     TermsPage
   ],
+<<<<<<< HEAD
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService]
+=======
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+  Storage
+  ]
+>>>>>>> 70613f50c07a5c4ec1be064d841f418b27de1730
 })
 export class AppModule {}

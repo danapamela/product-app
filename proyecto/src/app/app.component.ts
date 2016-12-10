@@ -22,7 +22,7 @@ import { TermsPage } from '../pages/terms/terms';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = OptionsPage;
+  rootPage: any = CreateproductPage;
   isLogin: boolean = true;
 
 
@@ -32,7 +32,7 @@ export class MyApp {
     this.initializeApp();
 
     if (this.isLogin) {
-      this.rootPage = HomePage;
+      this.rootPage = OptionsPage;
     } else {
       this.rootPage = HomePage;
     }
