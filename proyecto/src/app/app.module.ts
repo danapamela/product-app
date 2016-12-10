@@ -1,12 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ConfirmcreateproductPage } from '../pages/confirmcreateproduct/confirmcreateproduct';
-import { ConfirmdeleteproductPage } from '../pages/confirmdeleteproduct/confirmdeleteproduct';
-import { ConfirmeditproductPage } from '../pages/confirmeditproduct/confirmeditproduct';
-import { ConfirmeditprofilePage } from '../pages/confirmeditprofile/confirmeditprofile';
-import { ConfirmforgotpasswordPage } from '../pages/confirmforgotpassword/confirmforgotpassword';
-import { ConfirmregisterPage} from '../pages/confirmregister/confirmregister';
 import { CreateproductPage} from '../pages/createproduct/createproduct';
 import { EditproductPage} from '../pages/editproduct/editproduct';
 import { EditprofilePage} from '../pages/editprofile/editprofile';
@@ -26,12 +20,6 @@ import { TermsPage } from '../pages/terms/terms';
   declarations: [
     MyApp,
     HomePage,
-    ConfirmcreateproductPage,
-    ConfirmdeleteproductPage,
-    ConfirmeditproductPage,
-    ConfirmeditprofilePage,
-    ConfirmforgotpasswordPage,
-    ConfirmregisterPage,
     CreateproductPage,
     EditproductPage,
     EditprofilePage,
@@ -52,12 +40,6 @@ import { TermsPage } from '../pages/terms/terms';
   entryComponents: [
     MyApp,
     HomePage,
-    ConfirmcreateproductPage,
-    ConfirmdeleteproductPage,
-    ConfirmeditproductPage,
-    ConfirmeditprofilePage,
-    ConfirmforgotpasswordPage,
-    ConfirmregisterPage,
     CreateproductPage,
     EditproductPage,
     EditprofilePage,

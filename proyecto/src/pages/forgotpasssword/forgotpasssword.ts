@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
-/*
-  Generated class for the Forgotpasssword page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-forgotpasssword',
   templateUrl: 'forgotpasssword.html'
@@ -31,7 +26,7 @@ export class ForgotpassswordPage {
         {
           text: 'Aceptar',
           handler: () => {
-              this.navCtrl.setRoot(LoginPage);
+              this.navCtrl.push(LoginPage);
             
           }
         }
