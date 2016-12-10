@@ -14,7 +14,11 @@ import { LoginPage } from '../login/login';
 import { OptionsPage } from '../options/options';
 import { RegisterPage } from '../register/register';
 import { ProductService } from '../../providers/product.service';
+<<<<<<< HEAD
 import {Geolocation} from 'ionic-native';
+=======
+import { Geolocation } from 'ionic-native';
+>>>>>>> f1572580401b524ae148c3178011707b1aabd15c
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -24,6 +28,7 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
 	products: Product[] = [];
+<<<<<<< HEAD
 	private setDataCoords: any = {latitude: '', longitude: ''};
   	data: any = {latitude: '', longitude: ''};
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService,public  storage: Storage) {
@@ -33,6 +38,21 @@ export class HomePage {
     	this.data.latitude = res['latitude']; 
     	this.data.longitude = res['longitude']
     	});
+=======
+	private setDataCoords: any = { latitude: '', longitude: '' };
+	data: any = { latitude: '', longitude: '' };
+
+
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, storage: Storage ) {
+		this.getProducts();
+
+		this.storage.get("coords").then(res => {
+			console.log(res);
+			this.data.latitude = res['latitude'];
+			this.data.longitude = res['longitude']
+		});
+
+>>>>>>> f1572580401b524ae148c3178011707b1aabd15c
 	}
 
 	navToOptionsPage() {
@@ -98,18 +118,18 @@ export class HomePage {
 			);
 	}
 
-  ngOnInit() {
-    Geolocation.getCurrentPosition().then(resp => {
-      this.setDataCoords.latitude = resp.coords.latitude;
-      this.setDataCoords.longitude = resp.coords.longitude;
+	ngOnInit() {
+		Geolocation.getCurrentPosition().then(resp => {
+			this.setDataCoords.latitude = resp.coords.latitude;
+			this.setDataCoords.longitude = resp.coords.longitude;
 
-      this.storage.set("coords", this.setDataCoords);
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
-  }
+			this.storage.set("coords", this.setDataCoords);
+		}).catch((error) => {
+			console.log('Error getting location', error);
+		});
+	}
 
- 
+
 
 
 }

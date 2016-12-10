@@ -16,6 +16,10 @@ import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
 import { ProductService } from '../providers/product.service';
 import { Storage } from '@ionic/storage';
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1572580401b524ae148c3178011707b1aabd15c
 
 @NgModule({
   declarations: [
