@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ConfirmforgotpasswordPage } from '../confirmforgotpassword/confirmforgotpassword';
 
 /*
   Generated class for the Forgotpasssword page.
@@ -15,8 +16,9 @@ export class ForgotpassswordPage {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
-    console.log('Hello ForgotpassswordPage Page');
+    navToConfirmforgotpasswordPage() {
+  	this.navCtrl.setRoot(ConfirmforgotpasswordPage);
   }
+
 
 }

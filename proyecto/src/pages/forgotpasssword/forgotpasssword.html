@@ -7,12 +7,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>forgotpasssword</ion-title>
+    <ion-title>Cambiar Contraseña</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<ion-list>
+  <ion-item>
+    <ion-label color="primary" stacked>Usuario</ion-label>
+    <ion-input type="email" placeholder="ejemplo@mail.com"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Contraseña</ion-label>
+    <ion-input type="password" placeholder="******"></ion-input>
+  </ion-item>
+</ion-list>  
+
+<p>
+  <button ion-button block (click)="navToConfirmforgotpasswordPage()">Cambiar</button>
+</p>
+
 
 </ion-content>
