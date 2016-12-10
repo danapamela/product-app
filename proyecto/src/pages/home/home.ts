@@ -14,6 +14,8 @@ import { LoginPage } from '../login/login';
 import { OptionsPage } from '../options/options';
 import { RegisterPage } from '../register/register';
 import { ProductService } from '../../providers/product.service';
+import {Geolocation} from 'ionic-native';
+import { Storage } from '@ionic/storage';
 
 @Component({
 	selector: 'page-home',
@@ -22,9 +24,15 @@ import { ProductService } from '../../providers/product.service';
 export class HomePage {
 
 	products: Product[] = [];
-
+	private setDataCoords: any = {latitude: '', longitude: ''};
+  	data: any = {latitude: '', longitude: ''};
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService) {
 		this.getProducts();
+		this.storage.get("coords").then(res => {
+    	console.log(res); 
+    	this.data.latitude = res['latitude']; 
+    	this.data.longitude = res['longitude']
+    	});
 	}
 
 	navToOptionsPage() {
@@ -89,6 +97,19 @@ export class HomePage {
 			}
 			);
 	}
+
+  ngOnInit() {
+    Geolocation.getCurrentPosition().then(resp => {
+      this.setDataCoords.latitude = resp.coords.latitude;
+      this.setDataCoords.longitude = resp.coords.longitude;
+
+      this.storage.set("coords", this.setDataCoords);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
+
+ 
 
 
 }

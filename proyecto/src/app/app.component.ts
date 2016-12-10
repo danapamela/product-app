@@ -22,7 +22,7 @@ import { TermsPage } from '../pages/terms/terms';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = OptionsPage;
+  rootPage: any = CreateproductPage;
   isLogin: boolean = true;
 
 
