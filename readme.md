@@ -19,5 +19,5 @@ ionic plugin add cordova-plugin-geolocation
 
 Diego Ariza
 Dana Camelo
-Christian Sosa
+Christian Sosa - owen_cammus@hotmail.com // 3008101803
 Edison Bermudez
