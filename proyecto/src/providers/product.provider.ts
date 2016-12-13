@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SQLite } from 'ionic-native';
 
 @Injectable()
-export class ProductService {
+export class ProductProvider {
 
   db: SQLite;
   constructor() {
@@ -19,10 +19,10 @@ export class ProductService {
   createTable(){
     let sql = 'CREATE TABLE IF NOT EXISTS product(' +
         'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+        'name TEXT, ' +
         'type TEXT, ' +
-        'quantity INTEGER, ' +
-        'price TEXT, ' +
-        'name TEXT)';
+        'price INTEGER ' +
+        'quantity INTEGER) ';
     return this.db.executeSql(sql, []);
   }
 
@@ -39,13 +39,13 @@ export class ProductService {
   }
 
   create(product: any){
-    let query = 'INSERT INTO product(name) VALUES(?)';
-    return this.db.executeSql(query, [product.name]);
+    let query = 'INSERT INTO product(name, type, price, quantity) VALUES(?, ?, ?, ?)';
+    return this.db.executeSql(query, [product.name, product.type, product.price, product.quantity]);
   }
 
   update(product: any){
-    let query = 'UPDATE product SET name=? WHERE id=?';
-    return this.db.executeSql(query, [product.name, product.id]);
+    let query = 'UPDATE product SET name=?, type=?, price=?, quantity=? WHERE id=?';
+    return this.db.executeSql(query, [product.name, product.type, product.price, product.quantity, product.id]);
   }
 
 }
