@@ -1,6 +1,10 @@
 {
   "name": "proyecto",
+<<<<<<< HEAD
   "app_id": "b7c2d237",
+=======
+  "app_id": "a97f5b29",
+>>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
   "v2": true,
   "typescript": true,
   "proxies": [{

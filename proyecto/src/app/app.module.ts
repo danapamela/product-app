@@ -18,6 +18,7 @@ import { NetworkPage } from '../pages/network/network';
 import { ProductService } from '../providers/product.service';
 import { UserService } from '../providers/user.service';
 import { Storage } from '@ionic/storage';
+import { ProductService } from '../providers/product.service';
 
 
 @NgModule({
@@ -59,6 +60,12 @@ import { Storage } from '@ionic/storage';
     TermsPage,
     NetworkPage
   ],
+<<<<<<< HEAD
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService, UserService, Storage]
+=======
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+  Storage, ProductService
+  ]
+>>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
 })
 export class AppModule {}

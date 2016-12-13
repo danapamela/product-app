@@ -14,9 +14,13 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
+<<<<<<< HEAD
 import { NetworkPage } from '../pages/network/network';
 
 
+=======
+import { ProductService } from '../providers/product.service';
+>>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +34,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, public productService: ProductService) {
     this.initializeApp();
 
     if (this.isLogin) {
@@ -53,6 +57,11 @@ export class MyApp {
     this.platform.ready().then(() => {
       StatusBar.styleDefault();
       Splashscreen.hide();
+      productService.openDatabase();
+      .then(() => this.productService.createTable())
+      .then(()=>{
+        this.rootPage = HomePage;
+      })
     });
   }
 

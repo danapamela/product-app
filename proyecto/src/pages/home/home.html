@@ -7,11 +7,6 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <h2>Latitude: {{ data.latitude }}</h2>
-    <h2>Longitude: {{ data.longitude }}</h2>
-
-     
-    
     <ion-refresher (ionRefresh)="doRefreshHone($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
