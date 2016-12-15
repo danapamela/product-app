@@ -15,7 +15,8 @@ ionic plugin add cordova-plugin-network-information
 **Geolocation**
 ionic plugin add cordova-plugin-geolocation
 
-
+**Validador**
+npm install @angular/common
 
 Diego Ariza
 Dana Camelo

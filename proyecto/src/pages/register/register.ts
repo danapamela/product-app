@@ -7,6 +7,7 @@ import { User } from '../../models/user';
 import { UserService } from '../../providers/user.service';
 import { OptionsPage } from '../../pages/options/options';
 import { TermsPage } from '../../pages/terms/terms';
+import {CustomValidators} from '../validators/Validators';
 
 
 @Component({
@@ -22,8 +23,11 @@ export class RegisterPage {
      this.user.firstname = "nombre";
 
     this.todo = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: ['' , Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      firstname: ['', Validators.compose([Validators.required, Validators.minLength(3), CustomValidators.checkFirstCharacterValidator] )],
+      lastname: ['', Validators.compose([Validators.required, Validators.minLength(3), CustomValidators.checkFirstCharacterValidator] )],
+      phone: ['', Validators.compose([Validators.required, Validators.minLength(10), CustomValidators.checkFirstCharacterValidator] )],
     });     
   }
 
@@ -60,6 +64,9 @@ export class RegisterPage {
     console.log(this.todo);
     this.user = new User();
     this.user.email = this.todo.value.email;
+    this.user.firstname = this.todo.value.firstname;
+    this.user.lastname = this.todo.value.lastname;
+    this.user.phone = this.todo.value.phone;
     this.user.password = this.todo.value.password;
     console.log(this.user);
     this.presentConfirm();
