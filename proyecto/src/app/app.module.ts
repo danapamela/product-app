@@ -14,12 +14,11 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
-import { NetworkPage } from '../pages/network/network';
 import { ProductService } from '../providers/product.service';
 import { UserService } from '../providers/user.service';
 import { Storage } from '@ionic/storage';
-import { ProductService } from '../providers/product.service';
-
+import { ProductProvider } from '../providers/product.provider';
+import { UserProvider } from '../providers/user.provider';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { ProductService } from '../providers/product.service';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage,
-    NetworkPage
+    TermsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -57,15 +55,8 @@ import { ProductService } from '../providers/product.service';
     LoginPage,
     OptionsPage,
     RegisterPage,
-    TermsPage,
-    NetworkPage
+    TermsPage
   ],
-<<<<<<< HEAD
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService, UserService, Storage]
-=======
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
-  Storage, ProductService
-  ]
->>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProductService, UserService, ProductProvider, UserProvider Storage]
 })
 export class AppModule {}
