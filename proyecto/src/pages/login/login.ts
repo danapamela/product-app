@@ -22,8 +22,8 @@ export class LoginPage {
 
 
     this.todo = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.minLength(8), CustomValidators.checkFirstCharacterValidator] )],
-      password: ['' , Validators.compose([Validators.required, Validators.minLength(8), CustomValidators.checkFirstCharacterValidator] )],
+      email: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      password: ['' , Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
     }); 
 
   }

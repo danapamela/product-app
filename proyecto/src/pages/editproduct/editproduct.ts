@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {CustomValidators} from '../validators/Validators';
 
 
 @Component({
@@ -13,10 +14,10 @@ product: FormGroup;
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public viewCtrl: ViewController, private alertCtrl: AlertController) {
     this.product = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      price: [''],
-      quantity: [''],
+      name: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      type: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      price: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      quantity: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
       url: [''],
     });
   }

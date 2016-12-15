@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {CustomValidators} from '../validators/Validators';
 
 @Component({
   selector: 'page-editprofile',
@@ -15,11 +16,11 @@ export class EditprofilePage {
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public viewCtrl: ViewController, private alertCtrl: AlertController) {
     this.profile = this.formBuilder.group({
-      email: [''],
-      password: [''],
-      firstname: [''],
-      lastname: [''],
-      phone: [''],
+      email: ['' , Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.checkFirstCharacterValidator] )],
+      firstname: ['', Validators.compose([Validators.required, Validators.minLength(3), CustomValidators.checkFirstCharacterValidator] )],
+      lastname: ['', Validators.compose([Validators.required, Validators.minLength(3), CustomValidators.checkFirstCharacterValidator] )],
+      phone: ['', Validators.compose([Validators.required, Validators.minLength(10), CustomValidators.checkFirstCharacterValidator] )],
     });
   }
 
