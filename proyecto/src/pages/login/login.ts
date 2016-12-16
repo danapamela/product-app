@@ -4,9 +4,8 @@ import { HomePage } from '../home/home';
 import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../models/user';
-import { UserService } from '../../providers/user.service';
 import { OptionsPage } from '../../pages/options/options';
-import {CustomValidators} from '../validators/Validators';
+import { CustomValidators } from '../../validators/validator';
 
 @Component({
   selector: 'page-login',
@@ -18,7 +17,7 @@ export class LoginPage {
   todo: FormGroup;
   user: User;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public userService: UserService) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
 
 
     this.todo = this.formBuilder.group({
@@ -42,21 +41,6 @@ export class LoginPage {
   }
 
   signIn() {
-    this.userService.signIn(this.user)
-      .subscribe(
-      user => {
-        console.log(user);
-        if(user.id){
-          this.user = user;  
-          this.navCtrl.setRoot(HomePage); 
-        }else{
-          this.navCtrl.setRoot(OptionsPage); 
-        }
-      },
-      error => {
-        console.log(error);
-      }
-      );
+    
   }
-
 }

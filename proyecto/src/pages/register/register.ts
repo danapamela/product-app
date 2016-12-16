@@ -4,7 +4,6 @@ import { HomePage } from '../home/home';
 import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
 import { Validators, FormBuilder, FormGroup  } from '@angular/forms';
 import { User } from '../../models/user';
-import { UserService } from '../../providers/user.service';
 import { OptionsPage } from '../../pages/options/options';
 import { TermsPage } from '../../pages/terms/terms';
 
@@ -18,7 +17,7 @@ export class RegisterPage {
 	user: User = new User();
   todo: FormGroup;  
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, public userService: UserService, private formBuilder: FormBuilder,) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private formBuilder: FormBuilder,) {
      this.user.firstname = "nombre";
 
     this.todo = this.formBuilder.group({
@@ -42,7 +41,7 @@ export class RegisterPage {
         {
           text: 'Aceptar',
           handler: () => {
-            this.signUp();
+            
               this.navCtrl.setRoot(HomePage);
           }
         }
@@ -67,19 +66,7 @@ export class RegisterPage {
   }
 
   signUp() {
-    this.userService.signUp(this.user)
-      .subscribe(
-      user => {
-        console.log(user);
-        if(user.id){
-          this.user = user;  
-          this.navCtrl.setRoot(HomePage); 
-        }
-      },
-      error => {
-        console.log(error);
-      }
-      );
+    
   }  
 
 }

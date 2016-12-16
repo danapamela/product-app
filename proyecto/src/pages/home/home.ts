@@ -13,13 +13,9 @@ import { SignoffPage } from '../signoff/signoff';
 import { LoginPage } from '../login/login';
 import { OptionsPage } from '../options/options';
 import { RegisterPage } from '../register/register';
-<<<<<<< HEAD
 import { ProductService } from '../../providers/product.service';
 import { Geolocation } from 'ionic-native';
 import { Storage } from '@ionic/storage';
-=======
-
->>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
 
 @Component({
 	selector: 'page-home',
@@ -28,7 +24,6 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
 	products: Product[] = [];
-<<<<<<< HEAD
 	private setDataCoords: any = {latitude: '', longitude: ''};
   	data: any = {latitude: '', longitude: ''};
 
@@ -40,23 +35,6 @@ export class HomePage {
 			this.data.latitude = res['latitude'];
 			this.data.longitude = res['longitude']
 		});
-=======
-	users: User[] = [];
-
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
-
-		let producto1 = new Product();
-		let producto2 = new Product();
-		producto1.id = 1;
-		producto1.name = "Nombre 1";
-		producto2.id = 2;
-		producto2.name = "Nombre 2";
-
-		this.products.push(producto1);
-		this.products.push(producto2);
-
-		
->>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
 	}
 
 	navToOptionsPage() {
@@ -110,7 +88,6 @@ export class HomePage {
 	}
 
 
-<<<<<<< HEAD
 	getProducts() {
 		this.productService.getProducts()
 			.subscribe(
@@ -134,7 +111,4 @@ export class HomePage {
 		});
 	}
 
-
-=======
->>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
 }

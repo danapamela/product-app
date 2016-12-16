@@ -1,82 +1,76 @@
-import { Injectable } from "@angular/core";
-import { Product } from "../models/product";
-import { Http, Headers } from "@angular/http";
-import 'rxjs/add/operator/toPromise';
+import { Injectable } from '@angular/core';
+import { Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Rx';
-import { SQLite } from 'ionic-native';
+import {Observable} from 'rxjs/Rx';
+import {Product} from "../models/product";
 
-
+/*
+  Generated class for the Product provider.
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
 @Injectable()
 export class ProductService {
 
-<<<<<<< HEAD
-    private productsURI = 'http://138.68.0.83:7070';
-=======
-    db: SQLite;
+  private productsURI = 'http://138.68.0.83:7070/api/v1/product';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
-    private productsURI = 'http://138.68.0.83:7070 ';
->>>>>>> c8474b93dd6e091aac3c4c6a77b0ae7f37ae71ad
-    private headers = new Headers({
-        'Content-Type': 'application/json',
-        'Origin': 'http://138.68.0.83:7070'
-    });
+  constructor(public http: Http) {}
+ 
+  getProduct(id:number):Observable<Product> {
+        const url = this.productsURI + "/detail/"+ id;
+        return this.http.get(url)
+            .map(
+                response => response.json() as Product
+                )
+            .catch(this.handleError);
+   }
 
-
-
-    constructor(private http: Http) {
-        this.db = new SQLite();
-    }
-
-
-    create(product: any) {
-        let sql = 'INSERT INTO product(name) VALUES(?)';
-        return this.db.executeSql(sql, [product.name]);
-    }
-
-    createTable(){
-    let sql = 'CREATE TABLE IF NOT EXISTS product(' +
-        'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-        'name TEXT, ' +
-        'type TEXT, ' +
-        'quantity INTEGER, ' +
-        'price TEXT)';
-    return this.db.executeSql(sql, []);
+  getProducts(): Observable<Product[]> {
+      return this.http.get(this.productsURI + "/list")
+          .map(
+              response => response.json() as Product[]
+              )
+          .catch(this.handleError);
   }
 
-    delete(product: any) {
-        let sql = 'DELETE FROM product WHERE id=?';
-        return this.db.executeSql(sql, [product.id]);
+  create(product: Product): Observable<Product> {
+        var param = JSON.stringify(product);
+        var url = this.productsURI +"/create";
+        return this.http
+            .post(url,param, {headers: this.headers})
+            .map(
+                res => res.json()
+                )
+            .catch(this.handleError);
     }
 
-    getAll() {
-        let sql = 'SELECT * FROM product';
-        return this.db.executeSql(sql, [])
-            .then(response => {
-                let products = [];
-                for (let index = 0; index < response.rows.length; index++) {
-                    products.push(response.rows.item(index));
-                }
-                return Promise.resolve(products);
-            })
+    update(product: Product): Observable<Product> {
+        const url = `${this.productsURI + "/update"}/${product.id}`;
+        return this.http
+            .put(
+                url, 
+                JSON.stringify(product), 
+                {headers: this.headers})
+            .map(
+                () => product
+                )
+            .catch(this.handleError);
     }
 
-    openDatabase() {
-        return this.db.openDatabase({
-            name: 'data.db',
-            location: 'default' 
-        });
+    delete(id:number): Observable<Product> {
+        const url =  `${this.productsURI + "/delete"}/${id}`;
+        return this.http.delete(url)
+            .map(
+                () => {}
+                )
+            .catch(this.handleError);
     }
 
-    update(product: any) {
-        let sql = 'UPDATE product SET name=?, completed=? WHERE id=?';
-        return this.db.executeSql(sql, [product.name, product.id]);
-    }
+    
 
-
-
-    private handleError(error: any): Observable<any> {
-        console.error('An error occurred', error); 
-        return Observable.throw(error.message || error);
-    }
+  private handleError(error: any): Observable<any> {
+      console.error('An error occurred', error); // for demo purposes only
+      return Observable.throw(error.message || error);
+  }
 }
