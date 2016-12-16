@@ -20,4 +20,4 @@ ionic plugin add cordova-plugin-geolocation
 Diego Ariza - diegoari24@hotmail.com - 3204175939  
 Dana Camelo  
 Christian Sosa - owen_cammus@hotmail.com - 3008101803  
-Edison Bermudez
+Edison Bermudez 
