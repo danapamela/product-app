@@ -26,11 +26,6 @@ export class ProductdetailPage {
 	idProduct: number;
 
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, public productService: ProductService) {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> bb891fd267b4c0ac11902a43f04c30b6904e0aeb
 		this.idProduct = this.params.get('idProduct');
 		this.getProduct();
 
