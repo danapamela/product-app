@@ -4,7 +4,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { Geolocation } from 'ionic-native';
 import { Storage } from '@ionic/storage';
-
+import { Product } from '../../models/product';
+import { ProductService } from '../../providers/product.service';
 
 @Component({
   selector: 'page-createproduct',
@@ -12,25 +13,22 @@ import { Storage } from '@ionic/storage';
 })
 export class CreateproductPage {
 
-  product: FormGroup;
+  productForm: FormGroup;
+  product: Product;
 
   private setDataCoords: any = { latitude: '', longitude: '' };
   data: any = { latitude: '', longitude: '' };
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, public storage: Storage) {
-    this.product = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      price: [''],
-      quantity: [''],
-      url: [''],
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, public storage: Storage, public productService: ProductService) {
+    this.product = new Product();
+    this.productForm = this.formBuilder.group({
+      name: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      type: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      price: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      quantity: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
     });
 
-    this.storage.get("coords").then(res => {
-      console.log(res);
-      this.data.latitude = res['latitude'];
-      this.data.longitude = res['longitude']
-    });
+
 
   }
 
@@ -51,7 +49,20 @@ export class CreateproductPage {
           text: 'Ok',
           handler: () => {
             console.log('Ok clicked');
-            this.navCtrl.setRoot(HomePage);
+            this.product.name = this.productForm.value.name;
+            this.product.price = this.productForm.value.price;
+            this.product.type = this.productForm.value.type;
+            this.product.quantity = this.productForm.value.quantity;
+
+            this.storage.get("coords").then(res => {
+              console.log(res);
+              this.product.latitute  = res['latitude'];
+              this.product.longitude = res['longitude']
+            });
+
+
+            this.createProduct();
+           
           }
         }
       ]
@@ -69,6 +80,20 @@ export class CreateproductPage {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
+  }
+
+
+  createProduct(){
+    this.productService.create(this.product)
+      .subscribe(
+      res => {
+        console.log("why me");
+        this.navCtrl.setRoot(HomePage);
+      },
+      error => {
+        console.log(error);
+      }
+      );    
   }
 
 

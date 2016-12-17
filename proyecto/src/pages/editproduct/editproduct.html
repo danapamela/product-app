@@ -1,26 +1,34 @@
 <ion-content padding>
     <h3>Editar Producto</h3>
-    <form [formGroup]="product" (ngSubmit)="editProfileForm()">
-        <ion-item>
-            <ion-label>name</ion-label>
-            <ion-input type="text" formControlName="name"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>type</ion-label>
-            <ion-input type="text" formControlName="type"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>price</ion-label>
-            <ion-input type="text" formControlName="price"></ion-input>
-        </ion-item> 
-        <ion-item>
-            <ion-label>quantity</ion-label>
-            <ion-input type="text" formControlName="quantity"></ion-input>
-        </ion-item> 
-        <ion-item>
-            <ion-label>url</ion-label>
-            <ion-input type="text" formControlName="url"></ion-input>
-        </ion-item>
-        <button ion-button type="submit" [disabled]="!product.valid">Editar Producto</button>
+    <div *ngIf="productForm">
+    <form [formGroup]="productForm" (ngSubmit)="editProfileForm()">
+        <div *ngIf="product">
+            <ion-item>
+                <ion-label>name</ion-label>
+                <ion-input type="text" formControlName="name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>type</ion-label>
+                <ion-input type="text" formControlName="type">{{ product.type }}</ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>price</ion-label>
+                <ion-input type="text" formControlName="price">{{ product.price }}</ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>quantity</ion-label>
+                <ion-input type="text" formControlName="quantity">{{ product.quantity }} </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>latitute</ion-label>
+                <ion-input type="text" formControlName="latitute">{{ product.latitute }} </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>longitude</ion-label>
+                <ion-input type="text" formControlName="longitude">{{ product.longitude }} </ion-input>
+            </ion-item>
+            <button ion-button type="submit" [disabled]="!productForm.valid">Editar Producto</button>
+        </div>
     </form>
+    </div>
 </ion-content>

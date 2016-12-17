@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
-import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ModalController, NavParams, LoadingController } from 'ionic-angular';
 import { CreateproductPage } from '../createproduct/createproduct';
+import { ProductService } from '../../providers/product.service';
 import { EditproductPage } from '../editproduct/editproduct';
 import { EditprofilePage } from '../editprofile/editprofile';
 import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
@@ -21,25 +22,29 @@ import { HomePage } from '../home/home';
 })
 export class ProductdetailPage {
 
-	product: Product;
+	public product: Product;
+	idProduct: number;
 
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public modalCtrl: ModalController) {
-		this.product = new Product();
-		this.product.name = "Producto";
-		this.product.type = "Celular";
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, public productService: ProductService) {
+
+
+		this.idProduct = this.params.get('idProduct');
+		this.getProduct();
+
 	}
 
 	ionViewDidLoad() {
+		this.getProduct();
 		console.log('Hello ProductDetailPage Page');
 	}
 
-	navToRemoveProduct() {
+	navToRemoveProduct(productId: number) {
 		let alert = this.alertCtrl.create({
-			title: 'Confirm Remove Product',
-			message: 'Do you want to remove this product?',
+			title: 'Confirmar remover producto',
+			message: 'Deseas eliminar este producto?',
 			buttons: [
 				{
-					text: 'Cancel',
+					text: 'Cancelar',
 					role: 'cancel',
 					handler: () => {
 						console.log('Cancel clicked');
@@ -49,7 +54,19 @@ export class ProductdetailPage {
 					text: 'Ok',
 					handler: () => {
 						console.log('Ok clicked');
-						this.navCtrl.setRoot(HomePage);
+
+						this.productService.delete(this.idProduct)
+							.subscribe(
+							() => {
+								this.navCtrl.setRoot(HomePage);
+							},
+							error => {
+								console.log("UHUY");
+								console.log(error);
+							}
+							);
+
+						
 					}
 				}
 			]
@@ -58,7 +75,7 @@ export class ProductdetailPage {
 	}
 
 	navToEditProduct() {
-		let modal = this.modalCtrl.create(EditproductPage);
+		let modal = this.modalCtrl.create(EditproductPage, { idProduct: this.product.id});
 		modal.present();
 	}
 
@@ -84,5 +101,20 @@ export class ProductdetailPage {
 			]
 		});
 		alert.present();
+	}
+
+
+	getProduct() {
+		this.productService.getProduct(this.idProduct)
+			.subscribe(
+			product => {
+				this.product = product;
+				console.log(this.product);
+
+			},
+			error => {
+				console.log(error);
+			}
+			);
 	}
 }

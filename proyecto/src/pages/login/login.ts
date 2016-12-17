@@ -6,6 +6,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../models/user';
 import { OptionsPage } from '../../pages/options/options';
 import { CustomValidators } from '../../validators/validator';
+import { ProductService } from '../../providers/product.service';
+import { UserService } from '../../providers/user.service';
 
 @Component({
   selector: 'page-login',
@@ -17,13 +19,13 @@ export class LoginPage {
   todo: FormGroup;
   user: User;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public userService: UserService) {
 
 
     this.todo = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.minLength(8), CustomValidators.checkFirstCharacterValidator] )],
-      password: ['' , Validators.compose([Validators.required, Validators.minLength(8), CustomValidators.checkFirstCharacterValidator] )],
-    }); 
+      email: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.emailValidator])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    });
 
   }
 
@@ -41,6 +43,14 @@ export class LoginPage {
   }
 
   signIn() {
-    
+    this.userService.signIn(this.user)
+      .subscribe(
+      products => {
+        this.navCtrl.setRoot(HomePage);
+      },
+      error => {
+        console.log(error);
+      }
+      );
   }
 }
