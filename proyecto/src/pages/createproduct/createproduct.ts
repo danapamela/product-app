@@ -18,13 +18,15 @@ export class CreateproductPage {
   data: any = { latitude: '', longitude: '' };
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, public storage: Storage) {
-    this.product = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      price: [''],
-      quantity: [''],
-      url: [''],
+     this.product = this.formBuilder.group({
+      name: ['', Validators.compose([Validators.required, Validators.minLength(4), ])],
+      type: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
+      price: ['', Validators.compose([Validators.required, Validators.minLength(5), ])],
+      quantity: ['', Validators.compose([Validators.required, Validators.minLength(1), ])],
+      url: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
     });
+  
+
 
     this.storage.get("coords").then(res => {
       console.log(res);

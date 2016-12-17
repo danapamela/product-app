@@ -15,11 +15,11 @@ export class EditprofilePage {
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public viewCtrl: ViewController, private alertCtrl: AlertController) {
     this.profile = this.formBuilder.group({
-      email: [''],
-      password: [''],
-      firstname: [''],
-      lastname: [''],
-      phone: [''],
+      email: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(10), ])],
+      firstname: ['', Validators.compose([Validators.required, Validators.minLength(3), ])],
+      lastname: ['', Validators.compose([Validators.required, Validators.minLength(3), ])],
+      phone: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
     });
   }
 

@@ -13,11 +13,11 @@ product: FormGroup;
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public viewCtrl: ViewController, private alertCtrl: AlertController) {
     this.product = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      price: [''],
-      quantity: [''],
-      url: [''],
+      name: ['', Validators.compose([Validators.required, Validators.minLength(4), ])],
+      type: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
+      price: ['', Validators.compose([Validators.required, Validators.minLength(5), ])],
+      quantity: ['', Validators.compose([Validators.required, Validators.minLength(1), ])],
+      url: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
     });
   }
 

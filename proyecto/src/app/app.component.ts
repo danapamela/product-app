@@ -14,13 +14,8 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { RegisterPage } from '../pages/register/register';
 import { TermsPage } from '../pages/terms/terms';
-<<<<<<< HEAD
 import { ProductService } from '../providers/product.service';
-=======
 import { NetworkPage } from '../pages/network/network';
-
-
->>>>>>> 15059d19db7340a9438787edb9594036686a5a1b
 
 @Component({
   templateUrl: 'app.html'
@@ -53,18 +48,13 @@ export class MyApp {
 
   }
 
-  initializeApp() {
+initializeApp() {
     this.platform.ready().then(() => {
       StatusBar.styleDefault();
       Splashscreen.hide();
-      productService.openDatabase();
-      .then(() => this.productService.createTable())
-      .then(()=>{
-        this.rootPage = HomePage;
-      })
     });
   }
-
+  
   openPage(page) {
     
     if(page.component.name == 'SignoffPage'){
