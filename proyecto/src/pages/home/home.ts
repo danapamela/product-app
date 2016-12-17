@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, NavParams} from 'ionic-angular';
 import { CreateproductPage } from '../createproduct/createproduct';
 import { EditproductPage } from '../editproduct/editproduct';
 import { EditprofilePage } from '../editprofile/editprofile';
@@ -24,11 +24,15 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
 	products: Product[] = [];
+	idUser: number;
 	private setDataCoords: any = {latitude: '', longitude: ''};
   	data: any = {latitude: '', longitude: ''};
 
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, public storage: Storage ) {
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, public storage: Storage,  public params: NavParams) {
 		this.getProducts();
+
+
+		this.idUser = this.params.get('idUser');
 
 		this.storage.get("coords").then(res => {
 			console.log(res);
@@ -58,8 +62,8 @@ export class HomePage {
 
 	navToRemoveAccount() {
 		let alert = this.alertCtrl.create({
-			title: 'Confirm Remove Product',
-			message: 'Do you want to remove this product?',
+			title: 'Eliminar cuenta',
+			message: 'Deseas eliminar la cuenta?',
 			buttons: [
 				{
 					text: 'Cancel',
@@ -109,6 +113,11 @@ export class HomePage {
 		}).catch((error) => {
 			console.log('Error getting location', error);
 		});
+	}
+
+
+	deleteAccount(){
+
 	}
 
 }

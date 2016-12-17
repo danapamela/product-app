@@ -41,21 +41,21 @@ export class UserService {
 
     signIn(user: User): Observable<User> {
         return this.http
-            .post(`${this.usersURI}/user/sign-in`, JSON.stringify(user), { headers: this.headers })
+            .post(`${this.usersURI}user/sign-in`, JSON.stringify(user), { headers: this.headers })
             .map(response => response.json() as User)
             .catch(this.handleError);
     }
 
     signUp(user: User): Observable<User> {
         return this.http
-            .post(`${this.usersURI}/user/sign-up`, JSON.stringify(user), { headers: this.headers })
+            .post(`${this.usersURI}user/sign-up`, JSON.stringify(user), { headers: this.headers })
             .map(response => response.json() as User)
             .catch(this.handleError);
     }
 
 
     update(user: User): Observable<User> {
-        const url = `${this.usersURI}/${user.id}`;
+        const url = `${this.usersURI}${user.id}`;
         return this.http
             .put(url, JSON.stringify(user), { headers: this.headers })
             .map(() => user)

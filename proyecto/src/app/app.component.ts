@@ -62,6 +62,5 @@ export class MyApp {
     }else{
       this.nav.push(page.component);  
     }
-    
   }
 }
