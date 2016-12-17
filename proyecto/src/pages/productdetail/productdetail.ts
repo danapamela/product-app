@@ -26,8 +26,6 @@ export class ProductdetailPage {
 	idProduct: number;
 
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, public productService: ProductService) {
-
-
 		this.idProduct = this.params.get('idProduct');
 		this.getProduct();
 

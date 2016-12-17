@@ -45,8 +45,9 @@ export class LoginPage {
   signIn() {
     this.userService.signIn(this.user)
       .subscribe(
-      products => {
-        this.navCtrl.setRoot(HomePage);
+      user => {
+        console.log(user);
+        this.navCtrl.setRoot(HomePage, {idUser: user.id});
       },
       error => {
         console.log(error);
