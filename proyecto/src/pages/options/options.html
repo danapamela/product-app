@@ -1,19 +1,35 @@
 <ion-header>
 </ion-header>
 <ion-content>
-    <ion-grid>
-        <ion-row center>
-            <ion-col>
-                <button ion-button block (click)="navToRegisterPage()" style="font-family:simpsons">¡Registrarme!</button>
-                <button ion-button block (click)="navToLoginPage()">¡Ingresar!</button>
-            </ion-col>
-        </ion-row>
-        <ion-row center>
-            <ion-col>
-                <ion-avatar item-center>
-                    <img class="intro-image" src="https://i.ytimg.com/vi/F9udtxFExCY/hqdefault.jpg" alt="" />
-                </ion-avatar>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-slides>
+        <ion-slide>
+            <h1>Estamos listos?</h1>
+            <img src="https://i.ytimg.com/vi/6MURV9Yy92U/hqdefault.jpg" alt="">
+        </ion-slide>
+        <ion-slide>
+            <h1>Si capitan estamos listos?</h1>
+            <img src="http://cybernetnews.com/wp-content/uploads/2007/08/microsoft-20team-201978.jpg" alt="">
+        </ion-slide>
+        <ion-slide>
+            <h1>No los escucho?</h1>
+            <img src="https://i.ytimg.com/vi/6MURV9Yy92U/hqdefault.jpg" alt="">
+        </ion-slide>
+        <ion-slide>
+            <ion-grid>
+                <ion-row center>
+                    <ion-col>
+                        <button ion-button block (click)="navToRegisterPage()" style="font-family:simpsons">¡Registrarme!</button>
+                        <button ion-button block (click)="navToLoginPage()">¡Ingresar!</button>
+                    </ion-col>
+                </ion-row>
+                <ion-row center>
+                    <ion-col>
+                        <ion-avatar item-center>
+                            <img class="intro-image" src="http://i.vimeocdn.com/video/483990072_1280x720.jpg" alt="" />
+                        </ion-avatar>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
