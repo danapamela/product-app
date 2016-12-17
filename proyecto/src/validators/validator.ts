@@ -1,5 +1,5 @@
-import { AbstractControl } from "@angular/forms";
-
+import { AbstractControl  } from "@angular/forms";
+ 
 export class CustomValidators {
   public static passwordValidator(control: AbstractControl) {
 	    if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,20}$/)) {

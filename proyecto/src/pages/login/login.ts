@@ -52,7 +52,5 @@ export class LoginPage {
         console.log(error);
       }
       );
-
-
   }
 }

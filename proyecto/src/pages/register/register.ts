@@ -19,8 +19,6 @@ export class RegisterPage {
   todo: FormGroup;
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, private formBuilder: FormBuilder, public userService: UserService) {
-    this.user.firstname = "nombre";
-
     this.todo = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.emailValidator])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -42,8 +40,7 @@ export class RegisterPage {
         {
           text: 'Aceptar',
           handler: () => {
-
-            this.navCtrl.setRoot(HomePage);
+              this.navCtrl.setRoot(HomePage);
           }
         }
       ]

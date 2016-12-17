@@ -75,7 +75,7 @@ export class ProductdetailPage {
 	}
 
 	navToEditProduct() {
-		let modal = this.modalCtrl.create(EditproductPage);
+		let modal = this.modalCtrl.create(EditproductPage, { idProduct: this.product.id});
 		modal.present();
 	}
 

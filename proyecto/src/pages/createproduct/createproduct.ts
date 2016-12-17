@@ -87,6 +87,7 @@ export class CreateproductPage {
     this.productService.create(this.product)
       .subscribe(
       res => {
+        console.log("why me");
         this.navCtrl.setRoot(HomePage);
       },
       error => {
