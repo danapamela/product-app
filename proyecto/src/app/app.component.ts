@@ -32,7 +32,7 @@ export class MyApp {
     this.initializeApp();
 
     if (this.isLogin) {
-      this.rootPage = HomePage;
+      this.rootPage = OptionsPage;
     } else {
       this.rootPage = HomePage;
     }
@@ -62,6 +62,5 @@ export class MyApp {
     }else{
       this.nav.push(page.component);  
     }
-    
   }
 }
