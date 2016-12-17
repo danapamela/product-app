@@ -5,10 +5,7 @@
 </ion-header>
 <ion-content padding>
 
-    <h2>Latitude: {{ data.latitude }}</h2>
-    <h2>Longitude: {{ data.longitude }}</h2>
-
-    <form [formGroup]="product" (ngSubmit)="createProductForm()">
+    <form [formGroup]="productForm" (ngSubmit)="createProductForm()">
         <ion-item>
             <ion-label>name</ion-label>
             <ion-input type="text" formControlName="name"></ion-input>
@@ -25,10 +22,6 @@
             <ion-label>quantity</ion-label>
             <ion-input type="text" formControlName="quantity"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label>url</ion-label>
-            <ion-input type="text" formControlName="url"></ion-input>
-        </ion-item>
-        <button ion-button type="submit" [disabled]="!product.valid">Crear producto</button>
+        <button ion-button type="submit" [disabled]="!productForm.valid">Crear producto</button>
     </form>
 </ion-content>

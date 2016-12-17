@@ -9,14 +9,18 @@
 <ion-content padding>
     <ion-card>
         <ion-item>
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.type }}</p>
+            <div *ngIf="product">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.type }}</p>
+            </div>
         </ion-item>
     </ion-card>
-    <button ion-button secondary (click)="navToRemoveProduct()">Eliminar producto</button>
-    <br />
-    <button ion-button secondary (click)="navToEditProduct()">Editar producto</button>
-    <br />
-    <button ion-button secondary (click)="navToSignOff()">Cerrar sesión</button>
-    <br />
+    <div *ngIf="product">
+        <button ion-button secondary (click)="navToRemoveProduct()">Eliminar producto</button>
+        <br />
+        <button ion-button secondary (click)="navToEditProduct()">Editar producto</button>
+        <br />
+        <button ion-button secondary (click)="navToSignOff()">Cerrar sesión</button>
+        <br />
+    </div>
 </ion-content>

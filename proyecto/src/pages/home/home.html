@@ -12,7 +12,7 @@
     </ion-refresher>
     <h1>Lista de productos</h1>
     <ion-list>
-        <button ion-item *ngFor="let product of products" (click)="navToProductDetail(product)">
+        <button ion-item *ngFor="let product of products" (click)="navToProductDetail(product.id)">
             {{ product.name }}
         </button>
     </ion-list>

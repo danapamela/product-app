@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ForgotpassswordPage } from '../forgotpasssword/forgotpasssword';
-import { Validators, FormBuilder, FormGroup  } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../models/user';
 import { OptionsPage } from '../../pages/options/options';
 import { TermsPage } from '../../pages/terms/terms';
-
+import { CustomValidators } from '../../validators/validator';
+import { UserService } from '../../providers/user.service';
 
 @Component({
   selector: 'page-register',
@@ -14,19 +15,19 @@ import { TermsPage } from '../../pages/terms/terms';
 })
 export class RegisterPage {
 
-	user: User = new User();
-  todo: FormGroup;  
+  user: User = new User();
+  todo: FormGroup;
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private formBuilder: FormBuilder,) {
-     this.user.firstname = "nombre";
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private formBuilder: FormBuilder, public userService: UserService) {
+    this.user.firstname = "nombre";
 
     this.todo = this.formBuilder.group({
-      email: [''],
-      password: [''],
-    });     
+      email: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.emailValidator])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    });
   }
 
- presentConfirm() {
+  presentConfirm() {
     let alert = this.alertCtrl.create({
       title: '¡Hola! tu correo es' + this.todo.value.email,
       message: 'Confirma y Bienvenido',
@@ -41,8 +42,8 @@ export class RegisterPage {
         {
           text: 'Aceptar',
           handler: () => {
-            
-              this.navCtrl.setRoot(HomePage);
+
+            this.navCtrl.setRoot(HomePage);
           }
         }
       ]
@@ -51,7 +52,7 @@ export class RegisterPage {
   }
 
   navToTermsPage() {
-  	this.navCtrl.push(TermsPage);
+    this.navCtrl.push(TermsPage);
   }
 
 
@@ -62,11 +63,19 @@ export class RegisterPage {
     this.user.password = this.todo.value.password;
     console.log(this.user);
     this.presentConfirm();
-    
+
   }
 
   signUp() {
-    
-  }  
+    this.userService.signUp(this.user)
+      .subscribe(
+      products => {
+        this.navCtrl.setRoot(HomePage);
+      },
+      error => {
+        console.log(error);
+      }
+      );
+  }
 
 }

@@ -41,8 +41,10 @@ export class HomePage {
 		this.navCtrl.setRoot(OptionsPage);
 	}
 
-	navToProductDetail(product: any) {
-		this.navCtrl.push(ProductdetailPage);
+	navToProductDetail(idProduct: number) {
+		this.navCtrl.push(ProductdetailPage, {
+			idProduct: idProduct
+		});
 	}
 
 	navToProfileDetail(user: any) {
@@ -79,8 +81,6 @@ export class HomePage {
 	}
 
 	doRefreshHone(refresher) {
-		console.log('Begin async operation', refresher);
-
 		setTimeout(() => {
 			this.getProducts();
 			refresher.complete();
