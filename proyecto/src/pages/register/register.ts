@@ -66,8 +66,13 @@ export class RegisterPage {
   signUp() {
     this.userService.signUp(this.user)
       .subscribe(
+<<<<<<< HEAD
       user => {
         this.navCtrl.setRoot(HomePage, {idUser: user.id});
+=======
+      products => {
+        this.navCtrl.setRoot(HomePage);
+>>>>>>> bb891fd267b4c0ac11902a43f04c30b6904e0aeb
       },
       error => {
         console.log(error);

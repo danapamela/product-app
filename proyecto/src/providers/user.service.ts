@@ -41,21 +41,33 @@ export class UserService {
 
     signIn(user: User): Observable<User> {
         return this.http
+<<<<<<< HEAD
             .post(`${this.usersURI}user/sign-in`, JSON.stringify(user), { headers: this.headers })
+=======
+            .post(`${this.usersURI}/user/sign-in`, JSON.stringify(user), { headers: this.headers })
+>>>>>>> bb891fd267b4c0ac11902a43f04c30b6904e0aeb
             .map(response => response.json() as User)
             .catch(this.handleError);
     }
 
     signUp(user: User): Observable<User> {
         return this.http
+<<<<<<< HEAD
             .post(`${this.usersURI}user/sign-up`, JSON.stringify(user), { headers: this.headers })
+=======
+            .post(`${this.usersURI}/user/sign-up`, JSON.stringify(user), { headers: this.headers })
+>>>>>>> bb891fd267b4c0ac11902a43f04c30b6904e0aeb
             .map(response => response.json() as User)
             .catch(this.handleError);
     }
 
 
     update(user: User): Observable<User> {
+<<<<<<< HEAD
         const url = `${this.usersURI}${user.id}`;
+=======
+        const url = `${this.usersURI}/${user.id}`;
+>>>>>>> bb891fd267b4c0ac11902a43f04c30b6904e0aeb
         return this.http
             .put(url, JSON.stringify(user), { headers: this.headers })
             .map(() => user)
