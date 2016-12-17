@@ -72,7 +72,6 @@ export class RegisterPage {
   signUp() {
     this.userService.signUp(this.user)
       .subscribe(
-
       user => {
         this.navCtrl.setRoot(HomePage, {idUser: user.id});
       },
