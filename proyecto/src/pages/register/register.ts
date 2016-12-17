@@ -20,8 +20,11 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, private formBuilder: FormBuilder, public userService: UserService) {
     this.todo = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.minLength(6), CustomValidators.emailValidator])],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      email: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
+      firstname: ['', Validators.compose([Validators.required, Validators.minLength(3), ])],
+      lastname: ['', Validators.compose([Validators.required, Validators.minLength(3), ])],
+      phone: ['', Validators.compose([Validators.required, Validators.minLength(10), ])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
     });
   }
 
@@ -58,6 +61,9 @@ export class RegisterPage {
     this.user = new User();
     this.user.email = this.todo.value.email;
     this.user.password = this.todo.value.password;
+    this.user.firstname = this.todo.value.firstname;
+    this.user.lastname = this.todo.value.lastname;
+    this.user.phone = this.todo.value.phone;
     console.log(this.user);
     this.presentConfirm();
 
