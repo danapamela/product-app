@@ -8,7 +8,6 @@ import { OptionsPage } from '../../pages/options/options';
 import { TermsPage } from '../../pages/terms/terms';
 import { UserService } from '../../providers/user.service';
 
-
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
@@ -27,6 +26,7 @@ export class RegisterPage {
       lastname: ['', Validators.compose([Validators.required, Validators.minLength(3), ])],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(10), ])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
+
     });     
   }
 

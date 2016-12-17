@@ -6,6 +6,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../models/user';
 import { UserService } from '../../providers/user.service';
 import { OptionsPage } from '../../pages/options/options';
+import {CustomValidators} from '../validators/Validators';
 
 @Component({
   selector: 'page-login',
@@ -24,6 +25,7 @@ export class LoginPage {
       email: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6), ])],
     });
+
 
   }
 

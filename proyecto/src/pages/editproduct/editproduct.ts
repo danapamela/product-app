@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {CustomValidators} from '../validators/Validators';
 
 
 @Component({

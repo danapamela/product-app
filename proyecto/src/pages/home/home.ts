@@ -18,6 +18,7 @@ import { Geolocation } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 
 
+
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
@@ -26,7 +27,6 @@ export class HomePage {
 
 	products: Product[] = [];
 	users: User[] = [];
-
 	
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController, public productService: ProductService, public storage: Storage ) {
 		this.getProducts();
@@ -92,7 +92,8 @@ export class HomePage {
 		}, 2000);
 	}
 
-getProducts() {
+	getProducts() {
+
 		this.productService.getProducts()
 			.subscribe(
 			products => {
@@ -103,6 +104,5 @@ getProducts() {
 			}
 		);
 	}
-
 
 }

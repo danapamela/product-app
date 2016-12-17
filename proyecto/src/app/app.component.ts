@@ -29,7 +29,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public productService: ProductService) {
+  constructor(public platform: Platform) {
     this.initializeApp();
 
     if (this.isLogin) {
@@ -42,8 +42,7 @@ export class MyApp {
       { title: 'Inicio', component: HomePage },
       { title: 'Crear producto', component: CreateproductPage },      
       { title: 'Detalle del perfil', component: ProfiledetailPage },
-      { title: 'Cerrar sesión', component: SignoffPage },    
-      { title: 'network information', component: NetworkPage}  
+      { title: 'Cerrar sesión', component: SignoffPage }      
     ];
 
   }
